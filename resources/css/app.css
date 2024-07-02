@@ -1,0 +1,59 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+
+[x-cloak] {
+    display: none !important;
+}
+
+/* Vertical line left of the comment */
+.comments-container::before{
+    position:absolute;
+    display: block;
+    top: 0px;
+    left: -40px;
+    content: "";
+    width: 3px;
+    height: 100%;
+    background: #0044ff; 
+    opacity: .10;
+}
+.comment-container::before{
+    position:absolute;
+    display: block;
+    top: 57px;
+    left: -40px;
+    content: "";
+    width: 23px;
+    height: 3px;
+    background: #78909c; 
+    opacity: .08;
+}
+.comment-container:last-child::after{
+    position:absolute;
+    display: block;
+    top: 60px;
+    left: -40px;
+    content: "";
+    width: 3px;
+    height: calc(100% - 63px);
+    background: theme('colors.gray-background');
+    
+}
+.is-Admin::before{
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 38px;
+    border: 7px solid white;
+    box-shadow: 4px 4px 15px 0 rbga(36,37,38,0.08);
+    left: -58px;
+    background: theme('colors.purple');
+    opacity: 4;
+}
