@@ -16,7 +16,7 @@
 .comments-container::before{
     position:absolute;
     display: block;
-    top: 0px;
+    top: 10px;
     left: -40px;
     content: "";
     width: 3px;
@@ -27,13 +27,13 @@
 .comment-container::before{
     position:absolute;
     display: block;
-    top: 57px;
+    top: 157px;
     left: -40px;
     content: "";
     width: 23px;
     height: 3px;
-    background: #78909c; 
-    opacity: .08;
+    background: #0c1a11; 
+    opacity: .09;
 }
 .comment-container:last-child::after{
     position:absolute;
