@@ -56,6 +56,31 @@ class Idea extends Model
         // return 'bg-gray-200';
         
     }
+    public function isVoteByUser(?User $user)
+    {
+        if(!$user){
+            return false;
+        }
+        return Vote::where('user_id' , $user->id)
+                ->where('idea_id', $this->id)
+                ->exists();
+    }
+    public function vote(User $user)
+    {
+        User::create([
+            'idea_id' => $this->id,
+            'user_id' => $user->id,
+        ]);
+    }
+    public function removeVote(User $user)
+    {
+        // Delete the vote associated with the given user and idea.
+     
+        Vote::where('idea_id', $this->id)
+        ->where('user_id', $user->id)
+        // ->firstOrFail($removeVote->id)
+        ->delete();
+    }
     /**
      * Return the sluggable configuration array for this model.
      *

@@ -121,15 +121,28 @@
             </div>
         </div>
 
+    {{-- This check if user not login to voting for mobile devices --}}
+
         <div class=" hidden md:block  items-center justify-between space-x-3 ">
             <div class="bg-white font-semibold text-center rounded-xl px-2 py-1 float-left ">
-                <div class="text-xl leading-snug">{{$voteCount}}</div>
-                <div class="text-gray-400 text-xs leading-none">vote</div>
+                <div class="text-xl leading-snug">{{ $voteCount }}</div>
+                <div class="text-gray-400 text-xs leading-none">votes</div>
             </div>
+
+            @if (Route::has('login'))
+            <a  href="{{ route('login') }}"
+                class="flex items-center justify-center w-32 h-11 bg-gray-200 uppercase hover:bg-gray-300 text-gray-700 font-bold rounded-xl px-4 py2">
+                <span class="mr-1">Vote</span>
+            </a>
+            @else
             <button type="button"
                 class="flex items-center justify-center w-32 h-11 bg-gray-200 uppercase hover:bg-gray-300 text-gray-700 font-bold rounded-xl px-4 py2">
                 <span class="mr-1">Vote</span>
             </button>
+            @endif
+            
+            
+          
         </div>
 
     </div>

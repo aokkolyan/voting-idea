@@ -54,14 +54,23 @@
 
                         <div class="md:hidden flex items-center  mt-4 md:mt-0 mx-4 ">
                             <div class="bg-gray-100 rounded-xl text-center h-10 py-2 px-4 pr-8 border border-gray-200">
-                                <div class="text-sm font-bold leading-none">12</div>
+                                <div class="text-sm font-bold leading-none @if($hasVoted) text-blue @endif">{{ $voteCount }}</div>
                                 <div class="text-xxs font-semibold leading-none text-gray-900">votes</div>
                             </div>
-                            <button
-                                class="w-20 h-10 bg-gray-300 font-bold text-xxs  uppercase rounded-xl border border-gray-200
-                             hover:border-gray-400 transition duration-150 ease-in px-4 py-2 -mx-5">
-                                votes
+                             @if ($hasVoted)
+                             <button
+                             wire:click.prevent="vote"
+                             class="w-20 h-10 bg-gray-300 font-bold text-xxs  uppercase rounded-xl border border-gray-200
+                            hover:border-gray-400 transition duration-150 ease-in px-4 py-2 -mx-5"> voted
                             </button>
+                            @else
+                            <button
+                                wire:click.prevent="vote"
+                                class="w-20 h-10 bg-gray-300 font-bold text-xxs  uppercase rounded-xl border border-gray-200
+                                hover:border-gray-400 transition duration-150 ease-in px-4 py-2 -mx-5"> vote
+                            </button>
+                             @endif
+                           
                         </div>
 
                     </div>

@@ -19,15 +19,26 @@ class="idea-container bg-white rounded-xl flex hover:shadow-card transition dura
 >
 <div class="hidden md:block  border-gray-100 px-5 py-8">
     <div class="text-center">
-        <div class="font-semibold text-2xl">{{ $voteCount ?? "0" }}</div>
+        <div class="font-semibold text-2xl @if($hasVoted) text-blue @endif ">
+            {{ $voteCount ?? "0" }}</div>
         <div class="text-gray-500">Votes</div>
     </div>
 
     <div class="mt-8">
+        @if ($hasVoted)
         <button
-            class="w-20 bg-gray-200 font-bold text-xxs uppercase rounded-xl px-4 py-2 border border-gray-200 hover:border-gray-400  transition duration-150 ease-in">
-            voted
+        wire:click.prevent="vote"
+        class="w-20 bg-blue text-white font-bold text-xxs uppercase rounded-xl px-4 py-2 border border-blue hover:border-blue  transition duration-150 ease-in">
+        voted
         </button>
+        @else
+        <button
+        wire:click.prevent="vote"
+        class="w-20 bg-gray-200 font-bold text-xxs uppercase rounded-xl px-4 py-2 border border-gray-200 hover:border-gray-400  transition duration-150 ease-in">
+            vote
+        </button>
+        @endif
+       
     </div>
 </div>
 <div class="flex flex-col md:flex-row flex-1 px-2 py-6">
@@ -86,6 +97,7 @@ class="idea-container bg-white rounded-xl flex hover:shadow-card transition dura
                     <div class="text-xxs font-semibold leading-none text-gray-900">votes</div>
                 </div>
                 <button
+                    wire:click.prevent="vote"
                     class="w-20 h-10 bg-gray-300 font-bold text-xxs  uppercase rounded-xl border border-gray-200
                  hover:border-gray-400 transition duration-150 ease-in px-4 py-2 -mx-5">
                     votes
